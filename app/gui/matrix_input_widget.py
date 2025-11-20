@@ -17,8 +17,8 @@ class MatrixInputWidget(QWidget):
         self.table.setRowCount(rows)
         self.table.setColumnCount(cols)
 
-        self.table.setHorizontalHeaderLabels([str(i+1) for i in range(cols)])
-        self.table.setVerticalHeaderLabels([str(i+1) for i in range(rows)])
+        self.table.setHorizontalHeaderLabels([f"{i+1:d}" for i in range(cols)])
+        self.table.setVerticalHeaderLabels([f"{i+1:d}" for i in range(rows)])
 
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         self.table.verticalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)

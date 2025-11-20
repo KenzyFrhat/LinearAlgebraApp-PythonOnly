@@ -16,8 +16,8 @@ class ResultWidget(QWidget):
     def clear_table(self, rows, cols):
         self.table.clear()
         self.table.setRowCount(rows); self.table.setColumnCount(cols)
-        self.table.setHorizontalHeaderLabels([str(i+1) for i in range(cols)])
-        self.table.setVerticalHeaderLabels([str(i+1) for i in range(rows)])
+        self.table.setHorizontalHeaderLabels([f"{i+1:d}" for i in range(cols)])
+        self.table.setVerticalHeaderLabels([f"{i+1:d}" for i in range(rows)])
 
     def show_matrix(self, M):
         r = len(M); c = len(M[0]) if r>0 else 0
