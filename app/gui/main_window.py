@@ -2,8 +2,7 @@ from PyQt6.QtWidgets import (
     QWidget, QLabel, QSpinBox, QPushButton, QVBoxLayout, QHBoxLayout,
     QSizePolicy, QStyle, QMessageBox
 )
-from PyQt6.QtGui import QFont, QIcon
-from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QFont
 from app.gui.matrix_input_widget import MatrixInputWidget
 from app.gui.result_widget import ResultWidget
 from app.gui.steps_widget import StepsWidget
@@ -12,7 +11,7 @@ from app.core.rref import rref_with_steps
 from app.core.transpose import transpose_matrix
 from app.core.inverse import inverse_with_steps
 from app.utils.matrix_parser import parse_matrix_from_table
-from fractions import Fraction
+
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -112,4 +111,5 @@ class MainWindow(QWidget):
             self.result_widget.show_matrix(Inv)
             self.steps_widget.set_steps(steps if steps else ['Inverse computed'])
         except Exception as e:
-            QMessageBox.critical(self, 'Error', str(e))
+            QMessageBox.warning(self, "Inverse Not Supported",
+                "This matrix cannot be inverted.\n\nReason:\n" + str(e))
