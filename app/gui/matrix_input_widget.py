@@ -32,3 +32,13 @@ class MatrixInputWidget(QWidget):
                 item = QTableWidgetItem("0")
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 self.table.setItem(i, j, item)
+
+    def fill_sample(self):
+        counter = 1
+        for i in range(self.table.rowCount()):
+            for j in range(self.table.columnCount()):
+                item = QTableWidgetItem(str(counter))
+                item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                self.table.setItem(i, j, item)
+                counter += 1
+
