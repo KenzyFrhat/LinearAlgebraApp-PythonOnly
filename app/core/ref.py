@@ -23,6 +23,9 @@ def ref_with_steps(A_input):
         if pv != 1:
             A[r] = [x / pv for x in A[r]]
             steps.append(f"Divide row {r+1} by {pv}\n" + format_fraction_matrix(A))
+
+        #The elimination process to create zeros below the pivot
+        #?The difference between REF and RREF is that in REF we only eliminate entries below the pivot
         for i in range(r+1, rows): # eliminate entries below the pivot, force the rest of the column to be 0
             factor = A[i][c]
             if factor != 0:
