@@ -6,20 +6,20 @@ def ref_with_steps(A_input):
     A = copy.deepcopy(A_input)
     rows = len(A)
     columns = len(A[0]) if rows>0 else 0
-    steps = []
+    steps = [] # to store each step of the transformation
     r = 0
     for c in range(columns):
-        pivot = None
-        for i in range(r, rows):
+        pivot_row_index = None # to store the row index of the pivot element in column c
+        for i in range(r, rows): # find pivot in column c, starting from row r <vertically down search>
             if A[i][c] != 0:
-                pivot = i
+                pivot_row_index = i
                 break
-        if pivot is None:
+        if pivot_row_index is None:
             continue
-        if pivot != r:
-            A[r], A[pivot] = A[pivot], A[r]
-            steps.append(f"Swap row {pivot+1} with row {r+1}\n" + format_fraction_matrix(A))
-        pv = A[r][c]
+        if pivot_row_index != r:
+            A[r], A[pivot_row_index] = A[pivot_row_index], A[r]
+            steps.append(f"Swap row {pivot_row_index+1} with row {r+1}\n" + format_fraction_matrix(A))
+        pv = A[r][c] # pivot value , which is now at row r after any swap
         if pv != 1:
             A[r] = [x / pv for x in A[r]]
             steps.append(f"Divide row {r+1} by {pv}\n" + format_fraction_matrix(A))
